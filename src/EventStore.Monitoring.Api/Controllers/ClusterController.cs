@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using EventStore.Monitoring.Infrastructure.Communication.Http;
+using EventStore.Monitoring.Infrastructure.Communication;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventStore.Monitoring.Api.Controllers
@@ -13,10 +13,10 @@ namespace EventStore.Monitoring.Api.Controllers
             _eventStoreHttpClient = eventStoreHttpClient;
         }
 
-        [HttpGet("")]
+        [HttpGet("cluster")]
         public async Task<IActionResult> GetCluster()
         {
             return Ok(await _eventStoreHttpClient.GetClusterGossip());
         }
-    }
+    }    
 }

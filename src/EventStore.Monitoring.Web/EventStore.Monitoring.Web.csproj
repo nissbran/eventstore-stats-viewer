@@ -9,6 +9,6 @@
     <PackageReference Include="Serilog.Settings.Configuration" Version="2.6.1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="wwwroot\libs\" />
+    <ProjectReference Include="..\EventStore.Monitoring.Infrastructure\EventStore.Monitoring.Infrastructure.csproj" />
   </ItemGroup>
 </Project>

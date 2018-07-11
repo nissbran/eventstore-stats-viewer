@@ -3,6 +3,7 @@ using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Serilog;
+using Serilog.Sinks.SystemConsole.Themes;
 
 namespace EventStore.Monitoring.Api
 {
@@ -47,7 +48,6 @@ namespace EventStore.Monitoring.Api
             return new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true)
                 .Build();
         }
 
@@ -56,7 +56,7 @@ namespace EventStore.Monitoring.Api
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(configuration)
                 .Enrich.FromLogContext()
-                .WriteTo.Console()
+                .WriteTo.Console(theme: AnsiConsoleTheme.Code)
                 .CreateLogger();
         }
     }

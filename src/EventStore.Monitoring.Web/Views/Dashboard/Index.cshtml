@@ -1,0 +1,67 @@
+﻿@model DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<header class="page-header">
+    <h2 class="page-title">Dashboard</h2>
+</header>
+
+<h4>Test node</h4>
+<table>
+    @foreach (var node in Model.Nodes)
+    {
+        <thead>
+        <tr>
+            <th colspan="4">
+                @node.Name
+            </th>
+        </tr>
+        </thead>
+        
+        <thead>
+        <tr>
+            <th colspan="3">ES Process information</th>
+            <th>Information</th>
+        </tr>
+        <tr>
+            <th class="table-subheading">Cpu usage</th>
+            <th class="table-subheading">Uptime</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>@node.ProcessCpuPercentage%</td>
+            <td>@node.NodeUpTime</td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+        
+        <thead>
+        <tr>
+            <th colspan="2">System information</th>
+            <th colspan="3">System disk information</th>
+        </tr>
+        <tr>
+            <th class="table-subheading">Cpu usage</th>
+            <th class="table-subheading">Free Memory (MB)</th>
+            <th class="table-subheading">Total Size (GB)</th>
+            <th class="table-subheading">Usage (GB)</th>
+            <th class="table-subheading">Usage in percentage</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>@node.SystemCpuPercentage%</td>
+            <td>@node.SystemFreeMemory</td>
+            <td>@node.SystemDataDiskSize</td>
+            <td>@node.SystemDataDiskUsage</td>
+            <td>@node.SystemDataDiskUsagePercentage</td>
+        </tr>
+        </tbody>
+    }
+</table>

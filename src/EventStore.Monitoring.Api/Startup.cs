@@ -1,4 +1,4 @@
-﻿using EventStore.Monitoring.Api.Infrastructure.Configuration;
+﻿using EventStore.Monitoring.Api.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -18,17 +18,18 @@ namespace EventStore.Monitoring.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddApplicationServices();
+            services.AddApplicationServices(Configuration);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+//            if (env.IsDevelopment())
+//            {
+//                
+//            }
+            app.UseDeveloperExceptionPage();
 
             app.UseMvc();
         }
