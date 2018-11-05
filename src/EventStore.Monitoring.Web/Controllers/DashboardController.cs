@@ -18,9 +18,12 @@ namespace EventStore.Monitoring.Web.Controllers
         public async Task<IActionResult> Index()
         {
            // var gossip = await _eventStoreHttpClient.GetClusterGossip();
-            var stats = await _eventStoreHttpClient.GetStats();
+            //var stats = await _eventStoreHttpClient.GetStats();
+            //var infos = await _eventStoreHttpClient.GetInfos();
+
+            var collected = await _eventStoreHttpClient.GetCollectedEventStoreNodes();
             
-            return View(new DashboardViewModel(stats));
+            return View(new DashboardViewModel(collected));
         }
     }
 }

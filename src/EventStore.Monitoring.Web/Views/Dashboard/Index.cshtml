@@ -25,17 +25,18 @@
             <th>Information</th>
         </tr>
         <tr>
-            <th class="table-subheading">Cpu usage</th>
+            <th class="table-subheading">Cpu usage (Scaled)</th>
             <th class="table-subheading">Uptime</th>
+            <th class="table-subheading">Node version</th>
             <th></th>
         </tr>
         </thead>
 
         <tbody>
         <tr>
-            <td>@node.ProcessCpuPercentage%</td>
+            <td>@node.ProcessCpuPercentage% (@node.ProcessCpuScaled%)</td>
             <td>@node.NodeUpTime</td>
-            <td></td>
+            <td>@node.EventStoreVersion</td>
             <td></td>
         </tr>
         </tbody>

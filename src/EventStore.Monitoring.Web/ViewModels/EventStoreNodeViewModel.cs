@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Linq;
+using EventStore.Monitoring.Infrastructure.Models.Http;
 using EventStore.Monitoring.Infrastructure.Models.Http.Stats;
+using Remotion.Linq.Parsing.Structure.IntermediateModel;
 
 namespace EventStore.Monitoring.Web.ViewModels
 {
     public class EventStoreNodeViewModel
     {   
         public string Name { get; }
+        public string EventStoreVersion { get; }
+        
         public string ProcessCpuPercentage { get; }
+        public string ProcessCpuScaled { get; }
         public string NodeUpTime { get; }
         
         public string SystemCpuPercentage { get; }
@@ -16,11 +21,14 @@ namespace EventStore.Monitoring.Web.ViewModels
         public string SystemDataDiskUsage { get; }
         public string SystemDataDiskUsagePercentage { get; }
         
-        public EventStoreNodeViewModel(NodeStats stats)
+        public EventStoreNodeViewModel(NodeStats stats, Info info)
         {
             Name = stats.Name;
+            EventStoreVersion = info.ESVersion;
             
             ProcessCpuPercentage = stats.Proc?.Cpu.ToString("F2");
+            ProcessCpuScaled = stats.Proc?.CpuScaled.ToString("F2");
+            
             var upTime = (DateTimeOffset.UtcNow - stats.Proc?.StartTime).Value;
             NodeUpTime = $"{upTime.Days} Days {upTime.Hours} Hours {upTime.Minutes} minutes";
             

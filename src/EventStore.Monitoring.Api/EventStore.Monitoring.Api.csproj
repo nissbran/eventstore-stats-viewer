@@ -9,7 +9,6 @@
     <PackageReference Include="Serilog.Settings.Configuration" Version="2.6.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EventStore.Monitoring.Domain\EventStore.Monitoring.Domain.csproj" />
     <ProjectReference Include="..\EventStore.Monitoring.Infrastructure\EventStore.Monitoring.Infrastructure.csproj" />
   </ItemGroup>
 </Project>
